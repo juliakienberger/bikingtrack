@@ -1,9 +1,11 @@
 package at.fhhagenberg.controller;
 
+import at.fhhagenberg.Application;
 import at.fhhagenberg.model.BikingTrack;
 import at.fhhagenberg.model.Coordinate;
 import at.fhhagenberg.service.BikingTrackService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -50,5 +52,11 @@ public class BikingTrackController {
     public ResponseEntity<BikingTrack> finalizeBikingTrackForId(@PathVariable Long id) {
         BikingTrack track = bikingTrackService.finalizeBikingTrack(id);
         return new ResponseEntity<>(track, HttpStatus.OK);
+    }
+
+    @RequestMapping("/")
+    public String index() {
+        SpringApplication.run(Application.class, "");
+        return "";
     }
 }
